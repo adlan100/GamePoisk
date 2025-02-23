@@ -2,10 +2,22 @@
 {% load static %}
 
 {% block content %}
+    <div class="search-container">
+        <form method="get">
+            <input type="text" name="q" id="search-input" placeholder="Введите название игры">
+            <button class="submit-button">Поиск</button>
+        </form>
+    </div>
+
     <h1>Список игр</h1>
     <ul>
-        <li>Игра 1</li>
-        <li>Игра 2</li>
-        <li>Игра 3</li>
+        {% if games %}
+            {% for game in games %}
+                <li>{{ game }}</li>
+            {% endfor %}
+        {% else %}
+            <li>Игр не найдено</li>
+        {% endif %}
     </ul>
+
 {% endblock %}
